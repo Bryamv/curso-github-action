@@ -1,0 +1,14 @@
+name: hola-mundo
+on: [push]
+jobs:
+  hola-mundo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clonar repo
+        uses: actions/checkout@v3
+      - name: instalar node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Imprimir Mensaje
+        run: node hola-mundo.js
