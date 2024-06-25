@@ -1,36 +1,38 @@
-name: Triggers
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - "**.js"
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-
-    branches:
-      - main
-    paths:
-      - "**.js"
-  workflow_dispatch:
-    inputs:
-      alerta:
-        description: "Trigger a build"
-        required: true
-        default: "true"
-        type: choice
-        options:
-          - bajo
-          - medio
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-      - name : Saludar
-        run: node hola-mundo.js
-    
+    name: Triggers
+    on:
+      push:
+        branches:
+          - main
+        paths:
+          - "**.js"
+      pull_request:
+        types:
+          - opened
+          - synchronize
+          - reopened
+          - closed
+        branches:
+          - main
+        paths:
+          - "**.js"
+      workflow_dispatch:
+        inputs:
+          alerta:
+            description: Trigger a build
+            required: true
+            default: "true"
+            type: choice
+            options:
+              - bajo
+              - medio
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - name: setup node
+            uses: actions/setup-node@v2
+            with:
+              node-version: "20"
+          - name: Saludar
+            run: node hola-mundo.js
