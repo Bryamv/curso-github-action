@@ -12,6 +12,16 @@ on:
       - main
     paths:
       - "**.js"
+  workflow_dispatch:
+    inputs:
+      alerta:
+        description: "Trigger a build"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - bajo
+          - medio
 jobs:
   build:
     runs-on: ubuntu-latest
