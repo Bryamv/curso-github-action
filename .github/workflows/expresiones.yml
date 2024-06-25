@@ -1,0 +1,26 @@
+name: Expressions
+run-name: Aprendiendo Expresiones
+
+on:
+  workflow_dispatch:
+    inputs:
+      edad:
+        description: "Edad de la persona"
+        required: true
+        type: number
+      nombre:
+        description: "Nombre de la persona"
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Saludar
+        run: node hola-mundo.js
